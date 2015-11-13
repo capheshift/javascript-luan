@@ -2,6 +2,8 @@
 ---
 ## Chapter 1: Values, Types, and Operators
 
+*Trong thế giới máy tính, chỉ có một thứ duy nhất là dữ liệu (data). Bạn có thể đọc, sửa, tạo mới dữ liệu - nhưng bất cứ thứ gì khác không phải là dữ liệu, đơn giản là nó không tồn tại. Tất cả dữ liệu được lưu trữ trong một thứ tự dài của các bits.*
+
 ### Values
 *Tưởng tượng chúng ta có một đại dương chứa các bits. 1 máy tính cổ điển có hơn 30 tỉ bits lưu trữ.*
 
