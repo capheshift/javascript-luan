@@ -112,3 +112,7 @@ var something = 1;
 
 Biến `something` bên trong block giống biến ở bên ngoài block. Thực tế việc này được cho phép và nó chỉ có ích khi block này là phần điều kiện của lệnh if hoặc vòng lặp.
 Version tiếp theo của JavaScript sẽ giới thiệu từ khóa `let`, nó hoạt động như `var` nhưng chỉ có tác dụng trong vùng scope cận kề với nó trong khi với `var` thì biến có thể truy cập được ở bất kì vị trí nào trong hàm.
+
+*Replace this line and update your work there*
+
+### Summary
