@@ -144,5 +144,59 @@ console.log("R", 2, "D", 2);
 // → R 2 D 2
 ```
 
+### Closure
+Đây là khả năng xử lý các hàm như là gía trị, liên hệ với thực tế ta thấy biến cục bộ sẽ được tái tạo lại mỗi khi hàm được gọi, điều này gợi cho chúng ta một câu hỏi thú vị là điều gì sẽ xảy ra với các biến cục bộ khi lời gọi hàm đã tạo ra chúng không còn hoạt động?
+
+Bên dưới là một đoạn code minh họa cho điều đó, nó định nghĩa một hàm wrapValue, tạo ra một biến cục bộ. Sau đó nó trả về một hàm, mà hàm này sẽ truy cập đến biến cục bộ và trả về gía trị của biến này.
+```javascript
+function wrapValue(n) {
+  var localVariable = n;
+  return function() { return localVariable; };
+}
+
+var wrap1 = wrapValue(1);
+var wrap2 = wrapValue(2);
+console.log(wrap1());
+// → 1
+console.log(wrap2());
+// → 2
+```
+Điều này được cho phép và làm việc như bạn hy vọng, các biến vẫn có thể được truy cập. Thật vậy, nhiều trường hợp các biến có thời gian sống là như nhau, đó là một minh họa tốt cho khái niệm biến cục bộ được tái tạo lại sau mỗi lời gọi hàm, các lời gọi hàm khác nhau không thể tác động đến các biến cục bộ của nhau.
+
+Tính năng này có thể được liên hệ đến một trường hợp đặc biệt của biến cục bộ trong một hàm kèm theo được gọi là closure. Một hàm đặt trên biến cục bộ được gọi là một closure. Điều này không những giúp chúng ta khỏi phải lo lắng về thời gian sống của các biến mà còn cho phép chúng ta sáng tạo trong việc sử dụng các gía trị của hàm.
+
+Với một chút thay đổi, chúng ta có thể biến các ví dụ trước thành một hàm mà có thể thực hiện việc nhân một số tùy ý.
+```javascript
+function multiplier(factor) {
+  return function(number) {
+    return number * factor;
+  };
+}
+
+var twice = multiplier(2);
+console.log(twice(5));
+// → 10
+```
+Biến cục bộ trong ví dụ hàm wrapValue là một biến được khai báo tường minh không cần thiết vì một tham số là một biến cục bộ của chính nó.
+
+### Đệ quy
+Cho phép một hàm gọi chính bản thân nó, miền là nó được chú ý để không làm tràn stack. Đệ quy cho phép ta viết một số hàm với phong cách khác nhau. Lấy ví dụ bằng việc thay đổi hàm power như sau:
+```javascript
+function power(base, exponent) {
+  if (exponent == 0)
+    return 1;
+  else
+    return base * power(base, exponent - 1);
+}
+```
+Điều này khá giống với việc xác định lũy thừa trong toán học và các khái niệm của nó được mô tả một cách trang trọng hơn so với các biến thể lặp khác. Các hàm tự gọi chính nó nhiều lần với các tham số khác nhau để có được các phép nhân lặp đi lặp lại.
+
+Nhưng việc triển khai đệ quy sẽ gây ra một vấn đề nghiêm trọng: trong triển khai javascript truyền thống, nó chậm hơn gấp 10 lần so với việc dùng vòng lặp. Thực thi một vòng lặp đơn giản sẽ tiết kiệm hơn nhiều so với việc lặp đi lặp lại một hàm.
+
+Vấn đề về tốc độ so với sự sang trọng là một trong những điều khá thú vị. Hầu như bất kì chương trình nào cũng có thể được thực hiện nhanh hơn bằng cách làm cho nó lớn hơn và phức tạp hơn. Các lập trình viên sẽ phải quyết định để có được sự cân bằng thích hợp.
+
+Trong trường hợp hàm power thì việc lặp vẫn còn đơn giản và dễ dàng đọc được. Nó không có nhiều ý nghĩa để thay thế nó bằng đệ quy. Thông thường một chương trình với những khái niệm phức tạp như vậy mà có thể từ bỏ đi được một số hiệu qủa để làm chương trình đơn giản hơn là một sự lựa chọn hấp dẫn. Đôi khi với một lập trình viên giàu kinh nghiệm có thể thấy ngay rằng một cách tiếp cận đơn giản thì không bao giờ đủ nhanh.
+
+Một số lập trình viên lại tập trung qúa nhiều vào hiệu qủa, kể cả những chi tiết nhỏ nhặt nhất. Điều này sẽ làm tốn rất nhiều thời gian để viết hơn là việc sử dụng các thuật toán đơn giản mà thường chạy nhanh hơn. Đệ quy không phải lúc nào cũng kém hiệu qủa hơn vòng lặp. Với một số vấn đề thì giai quyết bằng đệ qui sẽ dễ dàng hơn so với dùng vòng lặp. 
 
 ### Summary
