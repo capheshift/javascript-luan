@@ -113,6 +113,36 @@ var something = 1;
 Biến `something` bên trong block giống biến ở bên ngoài block. Thực tế việc này được cho phép và nó chỉ có ích khi block này là phần điều kiện của lệnh if hoặc vòng lặp.
 Version tiếp theo của JavaScript sẽ giới thiệu từ khóa `let`, nó hoạt động như `var` nhưng chỉ có tác dụng trong vùng scope cận kề với nó trong khi với `var` thì biến có thể truy cập được ở bất kì vị trí nào trong hàm.
 
-*Replace this line and update your work there*
+### Tham số tùy chọn
+Đoạn code bên dưới được cho phép và có thể thực thi suông sẻ mà không gặp bất cứ vấn đề gì.
+```javascript
+alert("Hello", "Good Evening", "How do you do?");
+```
+Do hàm alert chỉ nhận một tham số truyền vào nên trong ví dụ trên các tham số khác đã bị bỏ qua và khi thực thi ta chỉ nhận được kết qủa là "Hello".
+
+Javascript rất sáng suốt trong việc đặt tham số, nếu như bạn đặt qúa nhiều tham số vào một hàm, thì một số tham số không cần thiết sẽ bị bỏ qua và nếu bạn đặt qúa ít tham số thì những tham số bị thiếu sẽ có gía trị mặc định là undifined. Mặc khác đây cũng chính là nhược điểm của javascript bởi vì nếu bạn đặt sai số lượng tham số và một hàm thì cũng không ai thông báo cho bạn biết, điều đó có thể làm chương trình của bạn chạy không chính xác.
+
+Ngược lại lợi ích của nó là có thể được sử dụng để tạo ra một hàm cho phép lựa chọn tham số linh hoạt. Như ví dụ bên dưới hàm power có thể được gọi với 2 tham số hoặc chỉ một tham số, trong trường hợp truyền vào 1 tham số thì exponent sẽ được gán mặc định là 2.
+```javascript
+function power(base, exponent) {
+  if (exponent == undefined)
+    exponent = 2;
+  var result = 1;
+  for (var count = 0; count < exponent; count++)
+    result *= base;
+  return result;
+}
+
+console.log(power(4));
+// → 16
+console.log(power(4, 3));
+// → 64
+```
+Trong chương kế tiếp chúng ta sẽ thấy được cách lấy chính xác danh sách các tham số đã được truyền vào. Ví dụ: console.log sẽ thực hiện điều đó, nó xuất ra tất cả các gía trị mà nó nhận được.
+```javascript
+console.log("R", 2, "D", 2);
+// → R 2 D 2
+```
+
 
 ### Summary
