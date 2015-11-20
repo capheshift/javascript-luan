@@ -86,7 +86,8 @@ Trong ví dụ, hàm `multiplier` trả về một mảnh đã được đóng b
 
 ## Đệ quy (Recursion)
 
-It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called recursive. Recursion allows some functions to be written in a different style. Take, for example, this alternative implementation of power:
+Một hàm có thể gọi chính nó là điều hoàn toàn có thể, miễn là nó đảm bảo không tràn ngăn xếp. Một hàm mà có thể gọi chính nó được gọi là đệ quy. Đệ quy cho phép một số hàm có thể viết bằng các cách khách nhau. Ví dụ, đây là một cách thực hiện hàm `power`:
+
 ```javascript
 function power(base, exponent) {
   if (exponent == 0)
@@ -98,25 +99,28 @@ function power(base, exponent) {
 console.log(power(2, 3));
 // → 8
 ```
-This is rather close to the way mathematicians define exponentiation and arguably describes the concept in a more elegant way than the looping variant does. The function calls itself multiple times with different arguments to achieve the repeated multiplication.
+`(Note: Thanh lịch - Code đẹp, khoa học)`
+Cách này thì gần giống với định nghĩa lũy thừa trong toán học và được cho là mô tả khái niệm một cách thanh lịch hơn so với việc dùng vòng lặp cho các biến. Hàm này gọi nó nhiều lần với nhiều đối số khác nhau để lặp lại phép nhân.
 
-But this implementation has one important problem: in typical JavaScript implementations, it’s about 10 times slower than the looping version. Running through a simple loop is a lot cheaper than calling a function multiple times.
+Tuy nhiên cách thực hiện này có một vấn đề quan trọng là: thực hiện nó trong JavaScript sẽ chậm đi khoảng 10 làn so với dùng vòng lặp. Chạy một vòng lặp đơn giản là ít tốn hơn rất nhiều so với gọi một hàm nhiều lần. 
 
-The dilemma of speed versus elegance is an interesting one. You can see it as a kind of continuum between human-friendliness and machine-friendliness. Almost any program can be made faster by making it bigger and more convoluted. The programmer must decide on an appropriate balance.
+Vấn đề so sánh tốc độ với thanh lịch là một vấn đề thú vị. Bạn có thể xem đó như một loại so sánh giữa "thân thiện với con người" và "thân thiện với máy". Hầu như bất kỳ chương trình có thể được thực hiện nhanh hơn bằng cách làm cho nó lớn hơn và phức tạp hơn. Các lập trình viên phải quyết định một sự cân bằng thích hợp.
 
-In the case of the earlier power function, the inelegant (looping) version is still fairly simple and easy to read. It doesn’t make much sense to replace it with the recursive version. Often, though, a program deals with such complex concepts that giving up some efficiency in order to make the program more straightforward becomes an attractive choice.
+Trong trường hợp của hàm `power` trước, phiên bản "khiếm nhã" (looping) vẫn còn khá đơn giản và dễ dọc. Nó không có ý nghĩa nhiều để thay thế bởi phiên bản đệ quy. Thông thường, mặc dù, một chương trình với một khái niệm phức tạp như vậy thì thỏa hiệp để từ bỏ hiệu suất để làm cho chương trình trở nên đơn giản là một sự lựa chọn hấp dẫn.
 
-The basic rule, which has been repeated by many programmers and with which I wholeheartedly agree, is to not worry about efficiency until you know for sure that the program is too slow. If it is, find out which parts are taking up the most time, and start exchanging elegance for efficiency in those parts.
+Nguyên tắc cơ bản đã được lặp đi lặp lại bởi nhiều lập trình viên và cùng với đó tôi hoàn toàn đồng ý: đừng quá lo lắng về hiệu năng cho đến khi bạn biết chắc chắn rằng chương trình quá chậm. Nếu vậy, tìm ra các phần chiếm nhiều thời gian nhất, và bắt đầu chuyển từ "thanh lịch"  sang "hiệu năng" ở những phần này.
 
-Of course, this rule doesn’t mean one should start ignoring performance altogether. In many cases, like the power function, not much simplicity is gained from the “elegant” approach. And sometimes an experienced programmer can see right away that a simple approach is never going to be fast enough.
+Tất nhiên, điều này không có nghĩa là bạn nên bắt đầu hoàn toànbỏ qua hiệu năng. Trong nhiều trường hợp, như hàm `power`, không quá đơn giản để để đạt được cách tiếp cận "thanh lịch". Và đôi khi, một lập trình viên kinh nghiệm có thể thấy ngay rằng một cách tiếp cận đơn giản không bao giờ là đủ nhanh.
 
 The reason I’m stressing this is that surprisingly many beginning programmers focus fanatically on efficiency, even in the smallest details. The result is bigger, more complicated, and often less correct programs, that take longer to write than their more straightforward equivalents and that usually run only marginally faster.
 
-But recursion is not always just a less-efficient alternative to looping. Some problems are much easier to solve with recursion than with loops. Most often these are problems that require exploring or processing several “branches”, each of which might branch out again into more branches.
+Lý do tôi nhấn mạnh điều này là đáng ngạc nhiên bởi vì nhiều lập trình viên bắt đầu tập trung một cách cuồng tín vào hiệu quả, ngay cả trong những chi tiết nhỏ nhất. Kết quả dẫn đến là chương trình lớn hơn, phức tạp hơn, và thường ít đúng, mà phải mất nhiều thời gian để viết hơn so với cách viết tương đương đơn giản hơn và thường chỉ để chạy nhẹ nhanh hơn.
 
-Consider this puzzle: by starting from the number 1 and repeatedly either adding 5 or multiplying by 3, an infinite amount of new numbers can be produced. How would you write a function that, given a number, tries to find a sequence of such additions and multiplications that produce that number? For example, the number 13 could be reached by first multiplying by 3 and then adding 5 twice, whereas the number 15 cannot be reached at all.
+Nhưng đệ quy không phải là luôn luôn chỉ cần một thay thế kém hiệu quả hơn so với vòng lặp. Một số vấn đề được giải quyết với đệ quy dễ dàng hơn so với các vòng lặp. Thường xuyên nhất là những vấn đề đòi hỏi phải khám phá, xử lí nhiều "nhánh", mỗi nhánh trong số đó có thể chia ra thành nhiều nhánh nữa.
 
-Here is a recursive solution:
+Hãy xem xét câu đố này: bắt đầu từ số 1 và lặp đi lặp lại, hoặc thêm 5 hoặc nhân với 3, một số lượng vô hạn các số mới có thể được tạo ra. Làm thế nào để viết một hàm như vậy, cho một số, thử tìm một chuỗi các phép cộng và phép nhân để sản xuất ra con số đó? Ví dụ, số 13 có thể đạt được bằng cách đầu tiên nhân với 3 và sau đó thêm số 5 hai lần, trong khi đó số 15 không thể tìm được.
+
+Và đây là cách giải đệ quy:
 ```javascript
 function findSolution(target) {
   function find(start, history) {
@@ -134,15 +138,17 @@ function findSolution(target) {
 console.log(findSolution(24));
 // → (((1 * 3) + 5) * 3)
 ```
-Note that this program doesn’t necessarily find the shortest sequence of operations. It is satisfied when it finds any sequence at all.
+Lưu ý rằng chương trình này không nhất thiết phải tìm chuỗi ngắn nhất của các phép tính. Nó thỏa mãn khi nó tìm thấy bất kỳ chuỗi nào. 
 
-I don’t necessarily expect you to see how it works right away. But let’s work through it, since it makes for a great exercise in recursive thinking.
+Tôi không nhất thiết mong bạn hiểu cách nó hoạt động ngay lập tức. Nhưng chúng ta hãy làm việc thông qua nó, bởi vì đo là một bài tập tuyệt vời trong suy nghĩ đệ quy.
 
-The inner function find does the actual recursing. It takes two arguments—the current number and a string that records how we reached this number—and returns either a string that shows how to get to the target or null.
+Các hàm bên trong thực sự không đệ quy thực. Phải mất hai đối số - số lượng hiện tại và một chuỗi ghi lại cách chúng ta đạt đến số lượng và trả về này hoặc là một chuỗi cho thấy làm thế nào để đạt được mục tiêu hoặc null.
 
-To do this, the function performs one of three actions. If the current number is the target number, the current history is a way to reach that target, so it is simply returned. If the current number is greater than the target, there’s no sense in further exploring this history since both adding and multiplying will only make the number bigger. And finally, if we’re still below the target, the function tries both possible paths that start from the current number, by calling itself twice, once for each of the allowed next steps. If the first call returns something that is not null, it is returned. Otherwise, the second call is returned—regardless of whether it produces a string or null.
+Để làm điều này, hàm phải thực hiện một trong ba hành động. Nếu số hiện tại là số cần tìm, lịch sử hiện tại là một cách để đạt được số cần tìm, vậy đơn giản chỉ cần trả về kết quả. Nếu số hiện tại lớn hơn số cần tìm, điều đó trở nên vô nghĩa trong các bước thử tiếp theo gì bởi vì phép cộng và nhân chỉ làm số đó lớn hơn. Và cuối cùng, nếu chúng vẫn bé hơn số cần tìm, hàm sẽ thử cả hai cách có thể là bắt đầu từ số hiện tại, bằng cách gọi chính nó hai lần, mỗi lần cho phép những bước tiếp theo thực hiện. Nếu lần gọi đầu tiên trả về một cái gì đó không phải là null thì nó được trả về. Nếu không, lần gọi thứ hai được trả về - cho dù nó tạo ra một chuỗi hoặc null.
 
-To better understand how this function produces the effect we’re looking for, let’s look at all the calls to find that are made when searching for a solution for the number 13.
+Để hiểu rõ hơn về cách mà hàm này tạo ra kết quả mà chúng ta đang tìm kiếm, hãy xem tất cả các lần gọi hàm để hiểu cách chúng thực hiện khi tìm kiếm lời giải cho con số 13.
+
+
 ```javascript
 find(1, "1")
   find(6, "(1 + 5)")
@@ -158,4 +164,5 @@ find(1, "1")
       find(13, "(((1 * 3) + 5) + 5)")
         found!
 ```
-The indentation suggests the depth of the call stack. The first time find is called it calls itself twice to explore the solutions that start with (1 + 5) and (1 * 3). The first call tries to find a solution that starts with (1 + 5) and, using recursion, explores every solution that yields a number less than or equal to the target number. Since it doesn’t find a solution that hits the target, it returns null back to the first call. There the || operator causes the call that explores (1 * 3) to happen. This search has more luck because its first recursive call, through yet another recursive call, hits upon the target number, 13. This innermost recursive call returns a string, and each of the || operators in the intermediate calls pass that string along, ultimately returning our solution.
+
+Thụt đầu dòng cho thấy độ sâu của stack. Lần đầu tiên tìm thấy được gọi là nó tự gọi hàm hai lần để tìm ra những giải pháp bắt đầu bằng (1 + 5) và (1 * 3). Lần gọi hàm đầu tiên cố gắng để tìm một giải pháp mà bắt đầu bằng (1 + 5), và sử dụng đệ quy, tìm ra mọi giải pháp đó mang lại một số nhỏ hơn hoặc bằng số cần tìm. Kể từ khi nó không tìm thấy một giải pháp đúng số cần tìm, nó trả về null cho lần gọi hàm đầu tiên. Toán tử || là nguyên nhân để lần gọi làm mà trường hợp (1 * 3) xảy ra. Lần tìm kiếm này may mắn hơn lần gọi đệ quy đầu tiên của chính nó, thông qua một lần gọi đệ quy khác, nó gần hơn số cần tìm - số 13. Đây gọi đệ quy trong cùng trả về một chuỗi, và mỗi toán tử || trong các lần gọi trung gian, các chuỗi được truyền qua cùng, cuối cùng trở về giải pháp của chúng ta.
