@@ -48,6 +48,24 @@ của chúng ta.Tuy nhiên khi chúng ta thực thi nhiều  câu lệnh trong v
 
 Nhiều lập trình viên javascipt để vòng lăj đơn hoặc `if` trong ngoặc.Họ làm điều này cả vì lợi ích của sự nhất quán và tránh việc phải thêm hoặc lại bỏ dấu ngoặc khi họ thay đổi số lượng câu lệnh .
 
+Số biến chứng tỏ cách thức một biến có thể theo dõi sự tiến bộ của một chương trình. Mỗi lần vòng lặp được lặp lại con số đẵ được tăng lên 2. Sau đó , vào mỗi lần lặp lại, nó được so sánh với con số 12 để quyết định xem chương trình đã thực hiện tất cả các câu lệnh cần làm hay chưa.
+
+Đó là một ví đã làm một vài điều thực sự hữu ích, bây giờ chúng ta có thể viết chương trình tính toán và hiển thị gái trị của 2^10 (2 mũ 10). Chúng ta sử dụng 2 biến : một để theo dõi kết quả và một để đếm bao nhiêu lần chúng ta đã nhân kết quả này với 2. Các thử nghiệm dù có biến thứ 2 đã đạt được 10 chưa và cập nhật cả 2 biến.
+
+Ví dụ
+```javascript
+var result = 1;
+var counter = 0;
+while (counter < 10) {
+  result = result * 2;
+  counter = counter + 1;
+}
+console.log(result);
+// → 1024
+```
+
+Biến đếm có thể cũng bắt đầu bằng 1 và kiểm tra tới <= 10, nhưng những lí do đó sẽ trở nên rõ ràng hơn trong chương 4, nó là một ý tưởng tốt để có thể sử dingj đến từ 0.
+
 
 
 

@@ -46,6 +46,9 @@ Một tuyên bố bắt đầu với các từ khóa trong khi tạo ra một v�
 Trong vòng lặp, chúng ta muốn in cả số hiện tại và thêm vào 2 cho biến
 của chúng ta.Tuy nhiên khi chúng ta thực thi nhiều  câu lệnh trong vòng lặp, chúng ta để chúng ở trong ngoặc nhọn `({and})`.Dấu ngoặc làm cho câu lệnh thực hiện những gì trong biểu thức: họ nhóm chúng lại với nhau, làm cho nó đếm chính xác tới từng câu lệnh một.Một chuỗi các câu lệnh được để trong dấu ngoặc được gọi là một `block`.
 
+Nhiều lập trình viên javascipt để vòng lăj đơn hoặc `if` trong ngoặc.Họ làm điều này cả vì lợi ích của sự nhất quán và tránh việc phải thêm hoặc lại bỏ dấu ngoặc khi họ thay đổi số lượng câu lệnh .
+
+
 
 
 
