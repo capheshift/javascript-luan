@@ -149,4 +149,4 @@ console .log( window . myVar );
 // → 10
 ```
 
-
+### Summary
