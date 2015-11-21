@@ -22,11 +22,15 @@ SƠN
 	console.log(10);
 	console.log(12);
 ```
-Những dòng code ở trên hoạt động bình thường nhưng chúng t cần một chương trình đơn giản hơn cũng với những chức năng là in ra các số chẵn từ 0-12.
+*Những dòng code ở trên hoạt động bình thường nhưng chúng t cần một chương trình đơn giản hơn cũng với những chức năng là in ra các số chẵn từ 0-12.*
+
 Nếu như chúng tôi cần in ra các số chẵn từ 0-1000 thì sao ? Chắc chắn là khi áp dụng những dòng code ở trên vào đây thì nó sẽ không kả thi.
 Những gì chúng ta cần ở đây là có thể lặp lại được những dòng code .Đây là một hình thức kiểm soát luồng `control flow` được gọi là vòng lặp `loop`.
-![alt text](../img/controlflow_loop.png "Loop Title Text 1")
-Vòng lặp cho phép chúng ta quay lại một vài điểm trong chương trình trước và lặp lại nó nới chương trình hiện tại của chúng ta. Nếu chúng ta kết hợp một biến đếm , chúng ta có thể làm như sau:
+![alt text][logo]
+
+[logo]: ../img/controlflow_loop.png "Logo Title Text 2"
+
+*Vòng lặp cho phép chúng ta quay lại một vài điểm trong chương trình trước và lặp lại nó nới chương trình hiện tại của chúng ta. Nếu chúng ta kết hợp một biến đếm , chúng ta có thể làm như sau:*
 ```javascript
 var number = 0;
 while(number <=12){
@@ -37,6 +41,13 @@ while(number <=12){
 //->2
 //....
 ```
+Một tuyên bố bắt đầu với các từ khóa trong khi tạo ra một vòng lặp.`while` được theo sau bởi một biêủ thức trong ngoặc đơn và sau đó là một điều kiên, giống như `if`.Các vòng lặp thực hiện điều kiện rằng miền là biểu thức gặp một giá trị nào đó là `true` khi nó chuyển đổi qua `Boolean` type.
+
+Trong vòng lặp, chúng ta muốn in cả số hiện tại và thêm vào 2 cho biến
+của chúng ta.Tuy nhiên khi chúng ta thực thi nhiều  câu lệnh trong vòng lặp, chúng ta để chúng ở trong ngoặc nhọn `({and})`.Dấu ngoặc làm cho câu lệnh thực hiện những gì trong biểu thức: họ nhóm chúng lại với nhau, làm cho nó đếm chính xác tới từng câu lệnh một.Một chuỗi các câu lệnh được để trong dấu ngoặc được gọi là một `block`.
+
+
+
 
 TÂN
 ---
