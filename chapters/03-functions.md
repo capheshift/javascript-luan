@@ -113,6 +113,8 @@ var something = 1;
 Biến `something` bên trong block giống biến ở bên ngoài block. Thực tế việc này được cho phép và nó chỉ có ích khi block này là phần điều kiện của lệnh if hoặc vòng lặp.
 Version tiếp theo của JavaScript sẽ giới thiệu từ khóa `let`, nó hoạt động như `var` nhưng chỉ có tác dụng trong vùng scope cận kề với nó trong khi với `var` thì biến có thể truy cập được ở bất kì vị trí nào trong hàm.
 
+# Trí
+
 ### Tham số tùy chọn
 Đoạn code bên dưới được cho phép và có thể thực thi suông sẻ mà không gặp bất cứ vấn đề gì.
 ```javascript
@@ -197,6 +199,6 @@ Vấn đề về tốc độ so với sự sang trọng là một trong những 
 
 Trong trường hợp hàm power thì việc lặp vẫn còn đơn giản và dễ dàng đọc được. Nó không có nhiều ý nghĩa để thay thế nó bằng đệ quy. Thông thường một chương trình với những khái niệm phức tạp như vậy mà có thể từ bỏ đi được một số hiệu qủa để làm chương trình đơn giản hơn là một sự lựa chọn hấp dẫn. Đôi khi với một lập trình viên giàu kinh nghiệm có thể thấy ngay rằng một cách tiếp cận đơn giản thì không bao giờ đủ nhanh.
 
-Một số lập trình viên lại tập trung qúa nhiều vào hiệu qủa, kể cả những chi tiết nhỏ nhặt nhất. Điều này sẽ làm tốn rất nhiều thời gian để viết hơn là việc sử dụng các thuật toán đơn giản mà thường chạy nhanh hơn. Đệ quy không phải lúc nào cũng kém hiệu qủa hơn vòng lặp. Với một số vấn đề thì giai quyết bằng đệ qui sẽ dễ dàng hơn so với dùng vòng lặp. 
+Một số lập trình viên lại tập trung qúa nhiều vào hiệu qủa, kể cả những chi tiết nhỏ nhặt nhất. Điều này sẽ làm tốn rất nhiều thời gian để viết hơn là việc sử dụng các thuật toán đơn giản mà thường chạy nhanh hơn. Đệ quy không phải lúc nào cũng kém hiệu qủa hơn vòng lặp. Với một số vấn đề thì giai quyết bằng đệ qui sẽ dễ dàng hơn so với dùng vòng lặp.
 
 ### Summary
