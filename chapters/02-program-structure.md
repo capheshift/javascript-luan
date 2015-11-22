@@ -64,8 +64,48 @@ console.log(result);
 // → 1024
 ```
 
-Biến đếm có thể cũng bắt đầu bằng 1 và kiểm tra tới <= 10, nhưng những lí do đó sẽ trở nên rõ ràng hơn trong chương 4, nó là một ý tưởng tốt để có thể sử dingj đến từ 0.
+Biến đếm có thể cũng bắt đầu bằng 1 và kiểm tra tới <= 10, nhưng những lí do đó sẽ trở nên rõ ràng hơn trong chương 4, nó là một ý tưởng tốt để có thể sử dụng để đếm từ 0.
 
+Vòng lặp `do` là một cấu trúc điều khiển tương tự như vòng lặp `while`. Nó khác biệt hơn ở một điểm : một vòng lặ `do` luôn luôn thực thi ít nhất một lần, và nó bắt đầu kiểm tra xem nó nên dừng lại ở đâu chỉ sau lần thực hiện đầu tiên. Để phản ánh điều này , các thử nghiệm xuất hiện sau nội dung của vòng lặp:
+
+```javascript
+do {
+  var yourName = prompt("Who are you?");
+} while (!yourName);
+console.log(yourName);
+```
+
+Đây là chương trình sẽ yêu cầu nhập vào một tên `yourName`. Nó sẽ hỏi bạn một lần nữa cho đến khi nó nhận thông báo không phải là chuỗi rỗng `yourName != null`. Áp dụng với toán tử `!` nó sẽ chuyển đôỉ giá trị từ kiểu `Boolean` trước khi phủ định nó, và tât cả các chuỗi chấp nhận `" "` chuyển đổi qua `true`. Ở đây nghĩa là `loop` tiếp tục chạy mãi đến khi bạn cung cấp một cái tên `name` rằng không để `yourName` là trống. Trong thực tế, ngay cả ngắt dòng trong chương trình cũng là do mình tùy chọn.
+
+### Thụt lề code(Indenting Code)
+Bạn có thể nhận thấy những khoảng trống tôi đã đặt ở phía trước một vài câu lệnh. Trong JavaScript, chúng không có bắt buộc, máy tính sẽ chấp nhận các chương trình tốt mà không có nó.Bạn có thể viết một chương trihf như là một đường dài duy nhất nếu bạn cảm thấy thích nó. Vai trò của sự thụt vào bên trong khối là làm cho cấu trúc của mã nguồn nổi bật và dễ đọc. Trong mã phức tạp, nơi khối mới được mở ra bên trong các khối khác , nó có thể trở nên khó nhìn thấy nơi một khối kết thúc và một khối bắt đầu. Với thụt đầu dòng thích hợp ta sẽ có cái nhìn trực quan hơn về chương trình. Tôi thích sử dụng 2 khoảng trắng cho mỗi khối mở, và một số người sử dụng các kí tự `tab`.
+
+### Breaking out of a loop
+
+Trong phần này tôi sẽ giới thiệu tới các bạn một dạng khác của `loop`.
+
+Có một tuyên bố đặc biệt được gọi là `break` rằng có tác dụng ngay lập tức nhảy ra khỏi vòng lặp đó.
+
+Một chương trình đơn giản minh họa cho câu lệnh break. Nó tìm những số đầu tiên là cả 2 lớn hơn 20 và chia hết cho 7.
+
+```javascript
+for (var current = 20; ; current++) {
+  if (current % 7 == 0)
+    break;
+}
+console.log(current);
+// → 21
+```
+
+Sử dụng toán tử `%` là một cách dễ dàng để kiểm tra xem một số chia hết cho số khác. Nếu có, phần còn lại của phép chia là `0`.
+
+Cấu trúc của `for` xây dựng trong ví dụ không có một phần để kiểm tra kết thúc vòng lặp. Điều này làm cho vòng lặp của chúng ta sẽ không bao giờ dừng lại trừ khi các lệnh break được thực thi.
+
+Nếu bạn đã rời câu lệnh khỏi câu lệnh `break` đó hoặc vô tình viết một điều kiênj là luôn luôn `true`, chương trình của bạn sẽ bị mắc kẹt trong một vòng lặp vô hạn. Một chương trình sẽ bị mắc kẹt trong vòng lặp mãi mà không bao giờ kết thúc , nó thường là những điều xấu.
+
+Nếu bạn tạo ra một vòng lặp vô hạn trong một trong các ví dụ trên hay ở trong sách này, bạn sẽ thường được hỏi là có muốn dừng lại câu lệnh sau một vài giây. Nếu thất bại, bạn sẽ phải đóng các tab mà bạn đang làm việc hoặc trên một số trình duyệt của bạn để thu hồi.
+
+Các từ khóa `continue` tương tự như `break`, trong đó nó ảnh hưởng tới xử lí của một vòng lặp. Khi tiếp tục được bắt gặp trong một vòng lặp , kiểm soát để nhảy ra khỏi vòng lặp và tới các câu lệnh tiếo theo trong vòng lặp.
 
 
 
