@@ -11,16 +11,16 @@ THÔNG
 ---
 
 SƠN
-###WHILE AND DO LOOPS
+### WHILE AND DO LOOPS
 *Xem một chương trình in tất cả các số chẵn từ 0- 12. Một cách để viết chương trình là như sau.*
 ```javascript
-	console.log(0);
-	console.log(2);
-	console.log(4);
-	console.log(6);
-	console.log(8);
-	console.log(10);
-	console.log(12);
+console.log(0);
+console.log(2);
+console.log(4);
+console.log(6);
+console.log(8);
+console.log(10);
+console.log(12);
 ```
 *Những dòng code ở trên hoạt động bình thường nhưng chúng t cần một chương trình đơn giản hơn cũng với những chức năng là in ra các số chẵn từ 0-12.*
 
@@ -77,7 +77,7 @@ console.log(yourName);
 
 Đây là chương trình sẽ yêu cầu nhập vào một tên `yourName`. Nó sẽ hỏi bạn một lần nữa cho đến khi nó nhận thông báo không phải là chuỗi rỗng `yourName != null`. Áp dụng với toán tử `!` nó sẽ chuyển đôỉ giá trị từ kiểu `Boolean` trước khi phủ định nó, và tât cả các chuỗi chấp nhận `" "` chuyển đổi qua `true`. Ở đây nghĩa là `loop` tiếp tục chạy mãi đến khi bạn cung cấp một cái tên `name` rằng không để `yourName` là trống. Trong thực tế, ngay cả ngắt dòng trong chương trình cũng là do mình tùy chọn.
 
-### Thụt lề code(Indenting Code)
+### Thụt lề code (Indenting Code)
 Bạn có thể nhận thấy những khoảng trống tôi đã đặt ở phía trước một vài câu lệnh. Trong JavaScript, chúng không có bắt buộc, máy tính sẽ chấp nhận các chương trình tốt mà không có nó.Bạn có thể viết một chương trihf như là một đường dài duy nhất nếu bạn cảm thấy thích nó. Vai trò của sự thụt vào bên trong khối là làm cho cấu trúc của mã nguồn nổi bật và dễ đọc. Trong mã phức tạp, nơi khối mới được mở ra bên trong các khối khác , nó có thể trở nên khó nhìn thấy nơi một khối kết thúc và một khối bắt đầu. Với thụt đầu dòng thích hợp ta sẽ có cái nhìn trực quan hơn về chương trình. Tôi thích sử dụng 2 khoảng trắng cho mỗi khối mở, và một số người sử dụng các kí tự `tab`.
 
 ### Breaking out of a loop
