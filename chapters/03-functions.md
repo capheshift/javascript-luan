@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 ## Chapter 3: Functions
 
@@ -71,6 +72,11 @@ Javascript không chỉ phân biệt giữa biến local và global. `Function` 
 
 Ví dụ, hàm khá vô lý sau có 2 `function` bên trong nó:
 
+=======
+### Giá trị hàm (Function as values)
+Các biến số hàm (`function variables`) thường chỉ đóng vai trò đơn giản như tên cho 1 phần riêng biệt của chương trình. Các biến số như vậy, chỉ được định nghĩa 1 lần và không bao giờ thay đổi. Điều này làm chúng ta dễ nhầm lẫn giữa hàm (`function`) và tên của nó.
+Tuy nhiên, cả 2 là khác biệt. 1 giá trị hàm (`function value`) có thể làm tất cả những thứ mà các giá trị (`values`) có thể làm - bạn có thể sử dụng nó trong các biểu thức tùy ý, chứ không phải đơn giản là gọi nó. Ta có thể lưu giá trị hàm (`function value`) ở 1 nơi mới, truyền nó như 1 đối số vào 1 hàm khác, và hơn thế nữa. Tương tự vậy, 1 biến có thể lưu trữ hàm như 1 biến bình thường và có thể được gán 1 giá trị mới, như:
+>>>>>>> phamtri2395
 ```javascript
 var landscape = function() {
   var result = "";
@@ -120,9 +126,13 @@ Version tiếp theo của JavaScript sẽ giới thiệu từ khóa `let`, nó h
 ```javascript
 alert("Hello", "Good Evening", "How do you do?");
 ```
+<<<<<<< HEAD
 Do hàm alert chỉ nhận một tham số truyền vào nên trong ví dụ trên các tham số khác đã bị bỏ qua và khi thực thi ta chỉ nhận được kết qủa là "Hello".
 
 Javascript rất sáng suốt trong việc đặt tham số, nếu như bạn đặt qúa nhiều tham số vào một hàm, thì một số tham số không cần thiết sẽ bị bỏ qua và nếu bạn đặt qúa ít tham số thì những tham số bị thiếu sẽ có gía trị mặc định là undifined. Mặc khác đây cũng chính là nhược điểm của javascript bởi vì nếu bạn đặt sai số lượng tham số và một hàm thì cũng không ai thông báo cho bạn biết, điều đó có thể làm chương trình của bạn chạy không chính xác.
+=======
+Trong [Chương 5](), chúng ta sẽ bàn luận về những điều tuyệt vời chúng ta có thể làm bằng việc truyền các giá trị hàm (`function values`) vào các hàm khác.
+>>>>>>> phamtri2395
 
 Ngược lại lợi ích của nó là có thể được sử dụng để tạo ra một hàm cho phép lựa chọn tham số linh hoạt. Như ví dụ bên dưới hàm power có thể được gọi với 2 tham số hoặc chỉ một tham số, trong trường hợp truyền vào 1 tham số thì exponent sẽ được gán mặc định là 2.
 ```javascript
@@ -140,7 +150,11 @@ console.log(power(4));
 console.log(power(4, 3));
 // → 64
 ```
+<<<<<<< HEAD
 Trong chương kế tiếp chúng ta sẽ thấy được cách lấy chính xác danh sách các tham số đã được truyền vào. Ví dụ: console.log sẽ thực hiện điều đó, nó xuất ra tất cả các gía trị mà nó nhận được.
+=======
+Đây là một *khai báo* hàm (`function declaration`). Cú pháp trên định nghĩa variable `square` và trỏ (`point`) nó vào hàm được cho. Cho đến bây giờ mọi thứ đều tốt đẹp. Ở đây có 1 sự tinh tế với hình thức khai báo hàm này, tuy nhiên.
+>>>>>>> phamtri2395
 ```javascript
 console.log("R", 2, "D", 2);
 // → R 2 D 2
@@ -163,11 +177,17 @@ console.log(wrap1());
 console.log(wrap2());
 // → 2
 ```
+<<<<<<< HEAD
 Điều này được cho phép và làm việc như bạn hy vọng, các biến vẫn có thể được truy cập. Thật vậy, nhiều trường hợp các biến có thời gian sống là như nhau, đó là một minh họa tốt cho khái niệm biến cục bộ được tái tạo lại sau mỗi lời gọi hàm, các lời gọi hàm khác nhau không thể tác động đến các biến cục bộ của nhau.
 
 Tính năng này có thể được liên hệ đến một trường hợp đặc biệt của biến cục bộ trong một hàm kèm theo được gọi là closure. Một hàm đặt trên biến cục bộ được gọi là một closure. Điều này không những giúp chúng ta khỏi phải lo lắng về thời gian sống của các biến mà còn cho phép chúng ta sáng tạo trong việc sử dụng các gía trị của hàm.
 
 Với một chút thay đổi, chúng ta có thể biến các ví dụ trước thành một hàm mà có thể thực hiện việc nhân một số tùy ý.
+=======
+Đoạn mã (code) trên hoạt động, mặc dù hàm được định nghĩa *bên dưới* (*below*) phần mã (code) dùng đến nó. Đó là bởi vì việc khai báo hàm không phải là 1 phần của quá trình *từ-trên-xuống*  thông thường. Chúng được xem như di chuyển đến đỉnh trong phạm vi (scope) của chúng và có thể được sử dụng bởi tất cả đoạn code thuộc cùng phạm vi. Điều này đôi lúc hữu dụng bởi nó cho chúng ta tự do sắp xếp(code) theo cách trông có nghĩa nhất, mà không cần phải lo lắng về việc phải định nghĩa tất cả hàm bên trên, trước khi chúng được dùng đến.
+
+Điều gì xảy ra khi ta đưa 1 định nghĩa hàm vào trong 1 khối điều kiện (`if`) hay vòng lặp? Chà, đừng làm điều đó. Sự khác biệt của nền tảng JavaScript trong từng trình duyệt  theo thường lệ sẽ thực hiện những công việc khác nhau tùy tình huống, và chuẩn mới nhất hầu như không cho phép điều này. Nếu bạn muốn chương trình của mình được ổn định, chỉ sử dụng hình thức định nghĩa hàm này ở khối hàm hay chương trình ngoài cùng nhất.
+>>>>>>> phamtri2395
 ```javascript
 function multiplier(factor) {
   return function(number) {
@@ -191,6 +211,7 @@ function power(base, exponent) {
     return base * power(base, exponent - 1);
 }
 ```
+<<<<<<< HEAD
 Điều này khá giống với việc xác định lũy thừa trong toán học và các khái niệm của nó được mô tả một cách trang trọng hơn so với các biến thể lặp khác. Các hàm tự gọi chính nó nhiều lần với các tham số khác nhau để có được các phép nhân lặp đi lặp lại.
 
 Nhưng việc triển khai đệ quy sẽ gây ra một vấn đề nghiêm trọng: trong triển khai javascript truyền thống, nó chậm hơn gấp 10 lần so với việc dùng vòng lặp. Thực thi một vòng lặp đơn giản sẽ tiết kiệm hơn nhiều so với việc lặp đi lặp lại một hàm.
@@ -246,6 +267,23 @@ function printFarmInventory(cows, chickens, pigs) {
 printFarmInventory(7, 11, 3);
 ```
 Nó hoạt động tốt. Nhưng cái tên `printZeroPaddedWithLabel` là cách đặt khá vụng về. Nó đề cập đến ba hàm, thêm số 0, và thêm một nhãn vào một chức năng duy nhất. Chúng ta nên chọn ra 1 khái niệm duy nhất.
+=======
+Duyệt qua chương trình này, mọi thứ diễn ra đại khái như sau: lời gọi đến `greet` làm cho control (điều khiển) nhảy đến điểm bắt đầu của hàm đó (dòng 2). Nó gọi `console.log` , `console.log` lấy quyền điều khiển, làm công việc của nó, và sau đó trả điều khiển về dòng 2. Sau đó nó đi đến đoạn cuối của hàm `greet`, sau đó trở lại nơi đã gọi nó, tại dòng 4. Dòng này sau đó gọi `console.log` một lần nữa.
+Chúng ta có giản đồ dòng chảy của điều khiển như sau:
+```javascript
+  top
+    greet
+      console.log
+    greet
+  top
+    console.log
+  top
+```
+Bởi vì 1 hàm phải nhảy trở lại (jump back) nơi gọi nó khi trở về (`return`), máy tính phải ghi nhớ ngữ cảnh từ đâu hàm được gọi. Trong trường hợp trên, `console.log` phải nhảy ngược trở lại hàm `greet`. Trong các trường hợp khác, nó nhảy ngược trở lại điểm kết thúc của chương trình.
+Nơi mà máy tính lưu trữ các ngữ cảnh này được gọi là *ngăn xếp lời gọi* (`call stack`). Mỗi lần hàm được gọi, ngữ cảnh hiện thời  được đẩy vào đỉnh của "ngăn xếp" này. Khi hàm trở về , máy tính loại bỏ ngữ cảnh ở đỉnh của ngăn xếp và dùng nó để tiếp tục thực thi.
+
+Lưu ngăn xếp này đòi hỏi 1 lượng bộ nhớ của máy tính. Khi ngăn xếp trở nên quá lớn, máy tính xuất ra thông điệp lỗi như "hết bộ nhớ stack" hay "quá nhiều sự quay về" . Đoạn mã sau đây minh họa cho điều này bằng cách yêu cầu máy tính 1 câu hỏi khá khó, sẽ dẫn đến việc gọi tới-lui  vô hạn  giữa 2 hàm. Đúng hơn, điều đó *sẽ là* vô hạn, nếu máy tính có 1 ngăn xếp vô hạn. Và vì không phải như vậy, chúng ta sẽ cạn bộ nhớ, hoặc "làm nổ stack".
+>>>>>>> phamtri2395
 ```javascript
 function zeroPad(number, width) {
   var string = String(number);
@@ -262,6 +300,7 @@ function printFarmInventory(cows, chickens, pigs) {
 
 printFarmInventory(7, 16, 3);
 ```
+<<<<<<< HEAD
 Một function với một tên đẹp và rõ ràng như zeroPad giúp người đọc dễ tìm ra và hiểu được chức năng của nó.
 
 # Functions and side effects
@@ -276,3 +315,5 @@ Tuy nhiên, không cần phải cảm thấy xấu khi viết các chức năng 
 
 
 ### Summary
+=======
+>>>>>>> phamtri2395
