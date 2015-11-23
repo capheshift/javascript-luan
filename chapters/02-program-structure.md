@@ -7,11 +7,57 @@ HÀ
 THẮNG
 ---
 
-THÔNG
----
+### Control flow
+Khi chương trình của bạn có nhiều hơn một thông báo, các báo cáo được thực hiện, dự đoán, từ trên xuống dưới. Như một ví dụ cơ bản, chương trình này có hai câu.
 
-SƠN
-### WHILE AND DO LOOPS
+![alt text][logoStraight]
+
+[logoStraight]: ../img/controlflow_straight.png "Logo Title Text 2"
+
+Hàm số chuyển đổi một giá trị cho một số. Chúng ta cần chuyển đổi mà vì kết quả nhanh chóng là một chuỗi giá trị, và chúng tôi muốn có một số. Có chức năng tương tự được gọi là chuỗi và Boolean chuyển đổi giá trị để các loại.
+
+### Conditional execution
+Thực hiện báo cáo theo thứ tự đường thẳng không phải là lựa chọn duy nhất chúng ta có. Một cách khác là điều kiện thực hiện, nơi mà chúng tôi lựa chọn giữa hai con đường khác nhau dựa trên một giá trị Boolean.
+
+![alt text][logoIf]
+
+[logoIf]: ../img/controlflow_if.png "Logo Title Text 2"
+
+Điều kiện thực hiện được viết với nếu từ khóa trong JavaScript. Trong trường hợp đơn giản, chúng tôi chỉ muốn có một số mã được thực hiện khi và chỉ khi, một điều kiện nhất định nắm giữ. Ví dụ, trong các chương trình trước đây, chúng ta có thể muốn hiển thị các hình vuông của các đầu vào chỉ khi đầu vào thực sự là một con số.
+
+```javascript
+theNumber = Number(prompt("Pick a number", ""));
+alert("Your number is the square root of " +
+      theNumber * theNumber);
+```
+Các từ khóa nếu thực hiện hoặc bỏ qua một tuyên bố tùy thuộc vào giá trị của một biểu thức Boolean. Các biểu hiện quyết định được viết sau từ khóa, giữa dấu ngoặc đơn, sau đó là tuyên bố để thực thi.
+
+Hàm `isNaN` chức năng là một hàm JavaScript chuẩn mà trả về đúng chỉ khi tham số đó được cho là `NaN`. Các số chức năng sẽ xảy ra để trả lại `NaN` khi bạn cung cấp cho nó một chuỗi mà không đại diện cho một số hợp lệ.
+
+Bạn sẽ thường xuyên không chỉ có mã thực thi khi một điều kiện đúng, nhưng cũng đang xử lý các trường hợp khác. Con đường thay thế này được đại diện bởi các mũi tên thứ hai trong biểu đồ. Các khác từ khóa có thể được sử dụng, cùng với nếu, để tạo ra hai riêng biệt, đường dẫn thực thi thay thế.
+
+```javascript
+var theNumber = Number(prompt("Pick a number", ""));
+if (!isNaN(theNumber))
+  alert("Your number is the square root of " +
+        theNumber * theNumber);
+else
+  alert("Hey. Why didn't you give me a number?");
+```
+Nếu chúng tôi có hơn hai con đường để lựa chọn, nhiều nếu / khác cặp có thể được "xích" lại với nhau. Dưới đây là một ví dụ:
+
+```javascript
+var num = Number(prompt("Pick a number", "0"));
+      if (num < 10)
+        alert("Small");
+      else if (num < 100)
+        alert("Medium");
+      else
+        alert("Large");
+```
+Chương trình đầu tiên sẽ kiểm tra xem num là ít hơn 10. Nếu có, nó chọn chi nhánh đó, cho thấy "Small", và được thực hiện. Nếu không, nó có khác chi nhánh, mà bản thân nó có chứa một giây nếu. Nếu điều kiện thứ hai (<100) nắm giữ, đó có nghĩa là số lượng là từ 10 đến 100, và "Medium" được hiển thị. Nếu không, thứ hai, và cuối cùng, khác chi nhánh được chọn.
+
+### While and Do Loops
 *Xem một chương trình in tất cả các số chẵn từ 0- 12. Một cách để viết chương trình là như sau.*
 ```javascript
 console.log(0);
@@ -26,9 +72,9 @@ console.log(12);
 
 Nếu như chúng tôi cần in ra các số chẵn từ 0-1000 thì sao ? Chắc chắn là khi áp dụng những dòng code ở trên vào đây thì nó sẽ không kả thi.
 Những gì chúng ta cần ở đây là có thể lặp lại được những dòng code .Đây là một hình thức kiểm soát luồng `control flow` được gọi là vòng lặp `loop`.
-![alt text][logo]
+![alt text][logoLoop]
 
-[logo]: ../img/controlflow_loop.png "Logo Title Text 2"
+[logoLoop]: ../img/controlflow_loop.png "Logo Title Text 2"
 
 *Vòng lặp cho phép chúng ta quay lại một vài điểm trong chương trình trước và lặp lại nó nới chương trình hiện tại của chúng ta. Nếu chúng ta kết hợp một biến đếm , chúng ta có thể làm như sau:*
 ```javascript
