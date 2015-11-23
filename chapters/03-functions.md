@@ -201,4 +201,78 @@ Trong trường hợp hàm power thì việc lặp vẫn còn đơn giản và d
 
 Một số lập trình viên lại tập trung qúa nhiều vào hiệu qủa, kể cả những chi tiết nhỏ nhặt nhất. Điều này sẽ làm tốn rất nhiều thời gian để viết hơn là việc sử dụng các thuật toán đơn giản mà thường chạy nhanh hơn. Đệ quy không phải lúc nào cũng kém hiệu qủa hơn vòng lặp. Với một số vấn đề thì giai quyết bằng đệ qui sẽ dễ dàng hơn so với dùng vòng lặp.
 
+### Growing functions
+Thông thường có 2 cách để giới thiệu `function` trong chương trình.
+Đầu tiên, bạn thấy mình viết những đoạn code giống nhau rất nhiều lần. Chúng ta muốn tránh những điều đó vì càng nhiều code thì đồng nghĩa với việc có nhiều không gian hơn cho các lỗi xuất hiện và người đọc code phải cố gắng nhiều hơn để hiểu được chương trình. Vì vậy khi có các chức năng lặp đi lặp lại ta gom chúng lại, đặt tên cho nó và đặt nó vào một function.
+Thứ hai, bạn thấy bạn cần một số chức năng mà bạn chưa từng viết. Bạn sẽ bắt đầu bằng cách đặt tên các chức năng và sau đó bạn viết phần thân của nó. Bạn thậm chí có thể phải viết code sử dụng function đó trước khi xác định các chức năng chính của function đó.
+Việc tìm một cái tên mô tả rõ ràng, ngắn gọn cho function là một việc không dễ dàng.Hãy cùng xem xét ví dụ sau.
+Chúng ta muốn viết một chương trình in ra 2 số, số bò và số gà trong 1 trang trại, với từ *Cows* và *Chickens* sau các số đó và các số 0 đệm trước để các số này đều luôn là 3 chữ số.
+
+`007 Cows`
+
+`011 Chickens`
+
+Rõ ràng chúng ta cần 1 function có 2 đối số.
+```javascript
+function printFarmInventory(cows, chickens) {
+  var cowString = String(cows);
+  while (cowString.length < 3)
+    cowString = "0" + cowString;
+  console.log(cowString + " Cows");
+  var chickenString = String(chickens);
+  while (chickenString.length < 3)
+    chickenString = "0" + chickenString;
+  console.log(chickenString + " Chickens");
+}
+printFarmInventory(7, 11);
+```
+
+Thêm `.length` vào sau chuỗi sẽ cho ta chiều dài của chuỗi đó. Vòng lặp while thêm các con số 0 trước các số cho đến khi có ít nhất 3 ký tự.
+Nhiệm vụ hoàn thành. Nhưng nếu người nông dân ở trang trại nuôi thêm heo và muốn chúng ta mở rộng phần mềm để đếm cả số lợn. Chúng ta chắc chắn có thể làm điều đó.Thay vì copy và dán đoạn code xuống, chúng ta sẽ có 1 cách tốt hơn.
+```javascript
+function printZeroPaddedWithLabel(number, label) {
+  var numberString = String(number);
+  while (numberString.length < 3)
+    numberString = "0" + numberString;
+  console.log(numberString + " " + label);
+}
+
+function printFarmInventory(cows, chickens, pigs) {
+  printZeroPaddedWithLabel(cows, "Cows");
+  printZeroPaddedWithLabel(chickens, "Chickens");
+  printZeroPaddedWithLabel(pigs, "Pigs");
+}
+
+printFarmInventory(7, 11, 3);
+```
+Nó hoạt động tốt. Nhưng cái tên `printZeroPaddedWithLabel` là cách đặt khá vụng về. Nó đề cập đến ba hàm, thêm số 0, và thêm một nhãn vào một chức năng duy nhất. Chúng ta nên chọn ra 1 khái niệm duy nhất.
+```javascript
+function zeroPad(number, width) {
+  var string = String(number);
+  while (string.length < width)
+    string = "0" + string;
+  return string;
+}
+
+function printFarmInventory(cows, chickens, pigs) {
+  console.log(zeroPad(cows, 3) + " Cows");
+  console.log(zeroPad(chickens, 3) + " Chickens");
+  console.log(zeroPad(pigs, 3) + " Pigs");
+}
+
+printFarmInventory(7, 16, 3);
+```
+Một function với một tên đẹp và rõ ràng như zeroPad giúp người đọc dễ tìm ra và hiểu được chức năng của nó.
+
+# Functions and side effects
+`Function` có thể tạm chia thành những chức năng được gọi để dùng chức năng phụ và những chức năng được gọi để dùng các giá trị trả về. (Mặc dù nó chắc chắn trả về cả chức năng phụ lẫn trả về giá trị).
+
+Các chức năng trợ giúp đầu tiên trong ví dụ trang trại, `printZeroPaddedWithLabel`, được gọi để dùng chức năng phụ: in một dòng. Trong version thứ hai, `zeroPad`, hàm này được gọi để sử dụng giá trị trả về của nó. Version thứ hai hữu ích hơn version thứ nhất trong nhiều tình huống. `Function` tạo ra và trả về các giá trị dễ dàng kết hợp và sử dụng theo những cách mới hơn so với các `function` được gọi để sử dụng các chức năng phụ.
+
+Một `function` *thuần khiết* là một loại function cụ thể thuộc loại value-producing, nó không chỉ không có các chức năng phụ mà còn không dựa trên các chức năng phụ của các code khác. Ví dụ nó không đọc các biến `global`, các biến này đôi khi bị thay đổi bởi các code khác. Một chức năng thuần khiết có tính chất dễ chịu, khi được gọi với những đối số tương tự, nó luôn luôn trả về giá trị giống nhau (và không làm bất cứ điều gì khác). Khi bạn không chắc chắn rằng một chức năng thuần khiết làm việc một cách chính xác, bạn có thể kiểm tra nó bằng cách đơn giản là gọi nó, nếu nó hoạt động trong bối cảnh đó thì nó sẽ làm việc trong mọi hoàn cảnh. Các function không thuần khiết có thể trả về giá trị khác nhau.
+
+Tuy nhiên, không cần phải cảm thấy xấu khi viết các chức năng không tinh khiết hay tiến hành xóa chúng khỏi code của bạn. Các tác dụng phụ thường hữu ích. Sẽ không có cách nào để viết một phiên bản thuần khiết của `console.log`, và `console.log` chắc chắn là hữu ích. Một số hành động có thể dễ dàng thể hiện một cách hiệu quả khi chúng ta sử dụng tác dụng phụ, tốc độ tính toán có thể là một lý do để tránh sự thuần khiết.
+
+
+
 ### Summary
